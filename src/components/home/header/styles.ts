@@ -6,7 +6,7 @@ export const Container = styled.div`
    
     .number {
     position: relative;
-    right: 33px;
+    right: 42px;
     bottom: 50px;
     color: #f4e7e7;
   }

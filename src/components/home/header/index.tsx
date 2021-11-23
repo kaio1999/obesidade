@@ -32,8 +32,10 @@ const HeaderHome: NextPage<Props> = ({ data }) => {
         </DivTextHeader>
         <div className="numberClinical">
           <Image src={numberRight} width="200px" height="100px" alt='Numero para contato' />
-          <span className="paragraph">{data.txtNumber}</span>
-          <span className="number">{data.numberClinical}</span>
+          <div>
+            <span className="paragraph">{data.txtNumber}</span>
+            <span className="number">{data.numberClinical}</span>
+          </div>
         </div>
       </Container>
     </>

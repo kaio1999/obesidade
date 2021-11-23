@@ -3,18 +3,23 @@ import Image from 'next/image';
 import Modal from '../../global/modal'
 import type { NextPage } from 'next'
 import { PlayFill } from 'styled-icons/bootstrap'
-import React from 'react'
+import React, { useState } from 'react'
 import leftImage from '../../../../public/assets/home2_16.jpg';
 import phone from '../../../../public/assets/home2_10.png';
 import country from '../../../../public/assets/home2_22.png';
 import rigthImage from '../../../../public/assets/home2_13.jpg';
+import { useFormAuth } from '../../../../providers/auth';
 
 interface Props {
   data?: any
 }
 
 const BodyHome: NextPage<Props> = ({ data }) => {
-  console.log(data, 'data')
+
+  const { form, setForm }: any = useFormAuth()
+
+  console.log(form, 'form')
+
   return (
     <>
       <ContainerBody>
@@ -72,20 +77,20 @@ const BodyHome: NextPage<Props> = ({ data }) => {
             <div className='divInputs'>
               <div>
                 <label>Nome:</label>
-                <input type='text' />
+                <input type='text' value={form.name} onChange={(e) => setForm({ name: e.target.value })} />
               </div>
               <div>
                 <label>Email:</label>
-                <input type='email' />
+                <input type='email' value={form.email} onChange={(e) => setForm({ email: e.target.value })} />
               </div>
               <div>
                 <label>Telefone:</label>
-                <input type='number' required />
+                <input type='number' value={form.phone} onChange={(e) => setForm({ phone: e.target.value })} />
               </div>
             </div>
             <div className='divMessage'>
               <label>Mensagens:</label>
-              <textarea name='Mensagens' id='Mensagens' />
+              <textarea name='Mensagens' id='Mensagens' onChange={(e) => setForm({ message: e.target.value })} />
               <button type='submit'>Enviar</button>
             </div>
           </Container>
