@@ -7,23 +7,23 @@ interface props {
   data: any,
 }
 
-const HomePage: NextPage<props> = ({data}) => {
+const HomePage: NextPage<props> = ({ data }) => {
   return (
     <>
-    <Home data={data}/>
+      <Home data={data} />
     </>
   )
 }
 
-export const getServerSideProps:GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 
   const date = data[0]
 
   return {
     props: {
-        data: date,
+      data: date,
     },
-};
+  };
 };
 
 
