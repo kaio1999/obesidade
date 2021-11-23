@@ -20,7 +20,7 @@ const HeaderHome: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Container>
-        <Image src={iconHome} width="350px" />
+        <Image src={iconHome} width="350px" alt='Mascote' />
         <DivTextHeader>
           <Title color='black' fSize={19}>
             <strong className="editUrl">{url}</strong>.{urlWay}
@@ -31,7 +31,7 @@ const HeaderHome: NextPage<Props> = ({ data }) => {
           </Typograph>
         </DivTextHeader>
         <div className="numberClinical">
-          <Image src={numberRight} width="200px" height="100px" />
+          <Image src={numberRight} width="200px" height="100px" alt='Numero para contato' />
           <span className="paragraph">{data.txtNumber}</span>
           <span className="number">{data.numberClinical}</span>
         </div>
