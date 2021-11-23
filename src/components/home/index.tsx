@@ -4,6 +4,7 @@ import BodyHome from './body'
 import FooterHome from './footer'
 import type { NextPage } from 'next'
 import Image from 'next/image';
+import { Container } from './styles'
 import leftImage from '../../../public/assets/home2_08.jpg';
 import background from '../../../public/assets/home2_04.jpg';
 import rigthImage from '../../../public/assets/home2_02.jpg';
@@ -15,7 +16,7 @@ interface props {
 
 const Home: NextPage<props> = ({ data }) => {
   return (
-    <div>
+    <Container>
       <Head>
         <title>{data.headTitle}</title>
         <meta name="description" content={data.desc} />
@@ -26,7 +27,7 @@ const Home: NextPage<props> = ({ data }) => {
       <HeaderHome data={data} />
       <BodyHome data={data} />
       <FooterHome data={data} />
-    </div>
+    </Container>
   )
 }
 

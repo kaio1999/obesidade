@@ -22,7 +22,7 @@ const BodyHome: NextPage<Props> = ({ data }) => {
         <Content>
           <div className='divFirst'>
             <div className='img'>
-              <Image src={phone} />
+              <Image src={phone} alt='phone' />
             </div>
             <h2 className="titlePhone">CENTRAL DE<br />AGENDAMENTO</h2>
           </div>
@@ -60,7 +60,7 @@ const BodyHome: NextPage<Props> = ({ data }) => {
             <h2>Confira nossos endereços<br />e Agende sua Avaliação</h2>
           </div>
           <div className='countryDiv'>
-            <Image src={country} />
+            <Image src={country} alt='Pais' />
           </div>
         </ModalLocation>
         <ModalForm>
