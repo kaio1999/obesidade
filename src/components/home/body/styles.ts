@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const ContainerBody = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 42px 0;
 `;
 
 export const Content = styled.div`
@@ -83,8 +84,7 @@ export const BoxPayment = styled.div`
 export const DivContent = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
-  margin-bottom: 4.7%;
+  margin-bottom: 42px;
 `;
 
 export const ModalLocation = styled.div`
@@ -92,6 +92,7 @@ export const ModalLocation = styled.div`
   display: flex;
   padding: 5px 15px;
   width: 45%;
+  justify-content: space-between;
 
   .divTitle {
     display: flex;
@@ -122,6 +123,7 @@ export const ModalForm = styled.div`
    background: #cccccc;
    display: flex;
    flex-direction: column;
+   padding: 5px 15px;
   width: 45%;
   .divTitle {
     display: flex;
@@ -160,20 +162,20 @@ export const ModalForm = styled.div`
 
 export const Container = styled.form`
   display: flex;
+  justify-content: space-between;
 
   .divMessage {
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
 
     textarea {
       border-radius: 7px;
       border: 2px solid #9e9e9e;
       outline: 0;
-      width: 250px;
+      width: 14vw;
       min-width: 250px;
-      max-width: 250px;
-      height: 140px;
+      max-width: 350px;
+      height: 100%;
       min-height: 140px;
       max-height: 140px;
     }
@@ -188,6 +190,12 @@ export const Container = styled.form`
       display: flex;
       align-self: self-end;
       margin: 10px 0;
+      cursor: pointer;
+
+      :hover {
+        font-size: 15px;
+        transition: all ease 1s;
+      }
     }
   }
 `;
