@@ -3,12 +3,13 @@ import Image from 'next/image';
 import Modal from '../../global/modal'
 import type { NextPage } from 'next'
 import { PlayFill } from 'styled-icons/bootstrap'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import leftImage from '../../../../public/assets/home2_16.jpg';
 import phone from '../../../../public/assets/home2_10.png';
 import country from '../../../../public/assets/home2_22.png';
 import rigthImage from '../../../../public/assets/home2_13.jpg';
 import { useFormAuth } from '../../../../providers/auth';
+import axios from 'axios';
 
 interface Props {
   data?: any
@@ -16,13 +17,12 @@ interface Props {
 
 const BodyHome: NextPage<Props> = ({ data }) => {
 
-  const { form, setForm }: any = useFormAuth()
-
-  console.log(form, 'form')
+  const { formSend, setName, setEmail, setPhone, setMessage }: any = useFormAuth()
 
   return (
     <>
       <ContainerBody>
+
         <Modal title="O QUE É BALÃO INTRAGÁSTRICO" img={leftImage} textModal="O balão intragástrico é uma alternativa não cirúrgica para o tratamento de obesidade,além de ser um dispositivo seguro e eficaz para redução de peso. Saiba Mais" />
         <Content>
           <div className='divFirst'>
@@ -77,21 +77,21 @@ const BodyHome: NextPage<Props> = ({ data }) => {
             <div className='divInputs'>
               <div>
                 <label>Nome:</label>
-                <input type='text' value={form.name} onChange={(e) => setForm({ name: e.target.value })} />
+                <input type='text' onChange={(e) => setName(e.target.value)} />
               </div>
               <div>
                 <label>Email:</label>
-                <input type='email' value={form.email} onChange={(e) => setForm({ email: e.target.value })} />
+                <input type='email' onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div>
                 <label>Telefone:</label>
-                <input type='number' value={form.phone} onChange={(e) => setForm({ phone: e.target.value })} />
+                <input type='number' onChange={(e) => setPhone(e.target.value)} />
               </div>
             </div>
             <div className='divMessage'>
               <label>Mensagens:</label>
-              <textarea name='Mensagens' id='Mensagens' onChange={(e) => setForm({ message: e.target.value })} />
-              <button type='submit'>Enviar</button>
+              <textarea name='Mensagens' id='Mensagens' onChange={(e) => setMessage(e.target.value)} />
+              <button onClick={() => formSend()}>Enviar</button>
             </div>
           </Container>
         </ModalForm>

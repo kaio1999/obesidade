@@ -190,6 +190,12 @@ export const Container = styled.form`
       display: flex;
       align-self: self-end;
       margin: 10px 0;
+      cursor: pointer;
+
+      :hover {
+        font-size: 15px;
+        transition: all ease 1s;
+      }
     }
   }
 `;
