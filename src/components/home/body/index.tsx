@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Modal from '../../global/modal'
 import type { NextPage } from 'next'
 import { PlayFill } from 'styled-icons/bootstrap'
-import React, { useEffect, useState } from 'react'
+import React, { useRef } from 'react'
 import leftImage from '../../../../public/assets/home2_16.jpg';
 import phone from '../../../../public/assets/home2_10.png';
 import country from '../../../../public/assets/home2_22.png';
@@ -17,7 +17,16 @@ interface Props {
 
 const BodyHome: NextPage<Props> = ({ data }) => {
 
-  const { formSend, setName, setEmail, setPhone, setMessage }: any = useFormAuth()
+  const {
+    formSend,
+    setName,
+    setEmail,
+    setPhone,
+    setMessage
+  }: any = useFormAuth()
+
+
+  const myRef = useRef()
 
   return (
     <>
@@ -77,20 +86,20 @@ const BodyHome: NextPage<Props> = ({ data }) => {
             <div className='divInputs'>
               <div>
                 <label>Nome:</label>
-                <input type='text' onChange={(e) => setName(e.target.value)} />
+                <input type='text' ref={myRef.current} required onChange={(e) => setName(e.target.value)} />
               </div>
               <div>
                 <label>Email:</label>
-                <input type='email' onChange={(e) => setEmail(e.target.value)} />
+                <input type='email' required onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div>
                 <label>Telefone:</label>
-                <input type='number' onChange={(e) => setPhone(e.target.value)} />
+                <input type='number' required onChange={(e) => setPhone(e.target.value)} onErrorCapture={() => console.log('teste')} />
               </div>
             </div>
             <div className='divMessage'>
               <label>Mensagens:</label>
-              <textarea name='Mensagens' id='Mensagens' onChange={(e) => setMessage(e.target.value)} />
+              <textarea name='Mensagens' required id='Mensagens' onChange={(e) => setMessage(e.target.value)} />
               <button onClick={() => formSend()}>Enviar</button>
             </div>
           </Container>
