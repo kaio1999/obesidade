@@ -85,6 +85,20 @@ export const DivContent = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 42px;
+
+
+  span.error {
+    display: flex;
+    margin: 4px 0;
+    padding: 2px 10px;
+    background: #D90000;
+    border: 1px solid #591B1B;
+    border-radius: 8px;
+    text-align: left;
+    color: #fefdfd;
+    font-size: 14px;
+  }
+
 `;
 
 export const ModalLocation = styled.div`

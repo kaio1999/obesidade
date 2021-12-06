@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Modal from '../../global/modal'
 import type { NextPage } from 'next'
 import { PlayFill } from 'styled-icons/bootstrap'
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import leftImage from '../../../../public/assets/home2_16.jpg';
 import phone from '../../../../public/assets/home2_10.png';
 import country from '../../../../public/assets/home2_22.png';
@@ -13,20 +13,21 @@ import axios from 'axios';
 
 interface Props {
   data?: any
+  event: any
 }
 
-const BodyHome: NextPage<Props> = ({ data }) => {
+const BodyHome: NextPage<Props> = ({ data, event }) => {
 
   const {
     formSend,
     setName,
     setEmail,
     setPhone,
-    setMessage
+    setMessage,
+    error
   }: any = useFormAuth()
 
-
-  const myRef = useRef()
+  const setErrou = true;
 
   return (
     <>
@@ -86,21 +87,25 @@ const BodyHome: NextPage<Props> = ({ data }) => {
             <div className='divInputs'>
               <div>
                 <label>Nome:</label>
-                <input type='text' ref={myRef.current} required onChange={(e) => setName(e.target.value)} />
+                <input type='text' required onChange={(e) => setName(e.target.value)} />
+                {error && <span className='error'></span>}
               </div>
               <div>
                 <label>Email:</label>
                 <input type='email' required onChange={(e) => setEmail(e.target.value)} />
+                {error && <span className='error'></span>}
               </div>
               <div>
                 <label>Telefone:</label>
-                <input type='number' required onChange={(e) => setPhone(e.target.value)} onErrorCapture={() => console.log('teste')} />
+                <input type='number' required onChange={(e) => setPhone(e.target.value)} />
+                {error && <span className='error'></span>}
               </div>
             </div>
             <div className='divMessage'>
               <label>Mensagens:</label>
               <textarea name='Mensagens' required id='Mensagens' onChange={(e) => setMessage(e.target.value)} />
-              <button onClick={() => formSend()}>Enviar</button>
+              {error && <span className='error'></span>}
+              <button type='submit' onClick={() => formSend()}>Enviar</button>
             </div>
           </Container>
         </ModalForm>
