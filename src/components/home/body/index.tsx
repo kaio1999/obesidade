@@ -36,8 +36,6 @@ const BodyHome: NextPage<Props> = ({ data }) => {
     }
   }, [])
 
-
-
   return (
     <>
       <ContainerBody>
