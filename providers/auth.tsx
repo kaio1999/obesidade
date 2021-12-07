@@ -10,11 +10,18 @@ export const AuthProvider = (props: any) => {
     const [phone, setPhone] = useState<any>('')
     const [message, setMessage] = useState<any>('')
     const [error, setError] = useState<boolean>()
+    const [modalSucces, setModalSuccess] = useState<boolean>(false)
+    const [local, setLocal] = useState<any>()
 
     console.log(name, 'name')
 
+    useEffect(() => {
+        console.log('entrou no useEffect')
+        setLocal(localStorage.getItem('modalSucces'))
+    }, [])
+
     const formSend = () => {
-        function teste(event: any) {
+        function invite(event: any) {
             event.preventDefault();
             const field = event.target
             const validation = ValidateField(field)
@@ -93,53 +100,37 @@ export const AuthProvider = (props: any) => {
         for (const field of Fields) {
             field.addEventListener("invalid", (event: any) => {
                 event.preventDefault()
-                teste(event)
+                invite(event)
             })
-            field.addEventListener("blur", teste)
+            field.addEventListener("blur", invite)
         }
         if (name !== '') {
             document.querySelector("form")?.addEventListener("submit", event => {
-                console.log('1')
-
-
-                console.log('2')
                 axios.post('https://obesidade-lp-default-rtdb.firebaseio.com/.json', {
                     name: name,
                     email: email,
                     phone: phone,
                     message: message,
-                }).then(() => window.location.reload())
+                }).then(() => {
+                    if (local === 'false') {
+                        console.log('teste 1')
+                        window.location.reload()
+                    }
+                    else {
+                        setModalSuccess(true)
+                    }
+                })
                 event.preventDefault()
             })
         }
 
     }
 
-
-
-
     return (
-        <AuthContext.Provider value={{ setName, setEmail, setPhone, setMessage, formSend, error }}>
+        <AuthContext.Provider value={{ setName, setEmail, setPhone, setMessage, formSend, error, modalSucces }}>
             {props.children}
         </AuthContext.Provider>
     )
 }
 
 export const useFormAuth = () => React.useContext(AuthContext)
-
-// if (!name || !email || !phone || !message) {
-//             ''
-//         }
-//         else {
-//             try {
-//                 axios.post('https://obesidade-lp-default-rtdb.firebaseio.com/.json', {
-//                     name: name,
-//                     email: email,
-//                     phone: phone,
-//                     message: message,
-//                 })
-//             }
-//             catch (error) {
-//                 console.log(error, 'erro')
-//             }
-//         }

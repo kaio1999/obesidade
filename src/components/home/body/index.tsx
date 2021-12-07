@@ -3,20 +3,20 @@ import Image from 'next/image';
 import Modal from '../../global/modal'
 import type { NextPage } from 'next'
 import { PlayFill } from 'styled-icons/bootstrap'
-import React, { useState } from 'react'
+import React from 'react'
 import leftImage from '../../../../public/assets/home2_16.jpg';
 import phone from '../../../../public/assets/home2_10.png';
 import country from '../../../../public/assets/home2_22.png';
 import rigthImage from '../../../../public/assets/home2_13.jpg';
 import { useFormAuth } from '../../../../providers/auth';
-import axios from 'axios';
 
 interface Props {
   data?: any
-  event: any
 }
 
-const BodyHome: NextPage<Props> = ({ data, event }) => {
+const BodyHome: NextPage<Props> = ({ data }) => {
+
+  const [local, setLocal] = React.useState<any>()
 
   const {
     formSend,
@@ -24,10 +24,20 @@ const BodyHome: NextPage<Props> = ({ data, event }) => {
     setEmail,
     setPhone,
     setMessage,
-    error
+    error,
+    modalSucces
   }: any = useFormAuth()
 
-  const setErrou = true;
+  React.useEffect(() => {
+    console.log('entrou no useEffect')
+    setLocal(localStorage.getItem('modalSucces'))
+
+    if (local === 'false') {
+      window.location.reload()
+    }
+  }, [])
+
+
 
   return (
     <>
@@ -57,6 +67,23 @@ const BodyHome: NextPage<Props> = ({ data, event }) => {
               EM ATÉ 36X
             </h1>
           </BoxPayment>
+
+          {modalSucces && (
+            <>
+              {local !== 'false' && (
+                <>
+                  <div className='invite'>
+                    <h3>Seu formulario foi enviado com sucesso!</h3>
+                    <span>Deseja realizar o cadastro e ficar por dentro das novidades ?</span>
+                    <div className='divButton'>
+                      <button>Sim</button>
+                      <button onClick={() => { window.location.reload(), localStorage.setItem('modalSucces', 'false') }}>Não</button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </>
+          )}
         </Content>
         <Modal title="O QUE É BANDA GÁSTRICA AJUSTÁVEL ?" img={rigthImage} textModal="Método que consiste na colocação de uma prótese de silicone em forma de anel ao redor da porção superior do estômago. Saiba Mais" />
       </ContainerBody>
@@ -105,10 +132,14 @@ const BodyHome: NextPage<Props> = ({ data, event }) => {
               <label>Mensagens:</label>
               <textarea name='Mensagens' required id='Mensagens' onChange={(e) => setMessage(e.target.value)} />
               {error && <span className='error'></span>}
-              <button type='submit' onClick={() => formSend()}>Enviar</button>
+              <button type='submit' onClick={() =>
+                formSend()
+
+              }>Enviar</button>
             </div>
           </Container>
         </ModalForm>
+
       </DivContent>
     </>
   )
