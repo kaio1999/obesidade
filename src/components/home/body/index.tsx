@@ -29,7 +29,6 @@ const BodyHome: NextPage<Props> = ({ data }) => {
   }: any = useFormAuth()
 
   React.useEffect(() => {
-    console.log('entrou no useEffect')
     setLocal(localStorage.getItem('modalSucces'))
 
     if (local === 'false') {

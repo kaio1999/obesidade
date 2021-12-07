@@ -13,10 +13,7 @@ export const AuthProvider = (props: any) => {
     const [modalSucces, setModalSuccess] = useState<boolean>(false)
     const [local, setLocal] = useState<any>()
 
-    console.log(name, 'name')
-
     useEffect(() => {
-        console.log('entrou no useEffect')
         setLocal(localStorage.getItem('modalSucces'))
     }, [])
 
@@ -82,8 +79,6 @@ export const AuthProvider = (props: any) => {
 
                 const error: any = verifyErrors()
 
-                console.log(error, 'error')
-
                 if (error) {
                     setError(true)
                     const message: any = customMessage(error)
@@ -113,7 +108,6 @@ export const AuthProvider = (props: any) => {
                     message: message,
                 }).then(() => {
                     if (local === 'false') {
-                        console.log('teste 1')
                         window.location.reload()
                     }
                     else {
