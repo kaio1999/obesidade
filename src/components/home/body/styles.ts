@@ -12,6 +12,51 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  .divButton {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 18px 0;
+
+    button {
+      background-image: linear-gradient(to bottom,#cccccc -80%,#008C28 86%, #0C0C0C);
+      color: white;
+      border-radius: 9px;
+      width: fit-content;
+      padding: 5px 30px;
+      border: none;
+      display: flex;
+      align-self: self-end;
+      margin: 10px 0;
+      cursor: pointer;
+
+      :hover {
+        font-size: 15px;
+        transition: all ease 1s;
+      }
+    }
+  }
+
+  div.invite {
+    background: #f1edf1;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 13px #d1d2d2;
+    border: 2px solid #008C28;
+    border-radius: 3px;
+    padding: 5px 10px;
+
+    h3 {
+      margin: 10px 0;
+    }
+
+    span {
+      margin: 10px 0;
+    }
+  }
+
   .ContainerPhone{
     display: flex;
     justify-content: center;
@@ -98,7 +143,6 @@ export const DivContent = styled.div`
     color: #fefdfd;
     font-size: 14px;
   }
-
 `;
 
 export const ModalLocation = styled.div`
