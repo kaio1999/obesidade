@@ -3,13 +3,8 @@ import HeaderHome from './header'
 import BodyHome from './body'
 import FooterHome from './footer'
 import type { NextPage } from 'next'
-import Image from 'next/image';
 import { Container } from './styles'
-import leftImage from '../../../public/assets/home2_08.jpg';
-import background from '../../../public/assets/home2_04.jpg';
-import rigthImage from '../../../public/assets/home2_02.jpg';
 import Head from 'next/head'
-
 interface props {
   data?: any
 }

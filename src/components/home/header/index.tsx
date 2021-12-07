@@ -20,7 +20,7 @@ const HeaderHome: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Container>
-        <Image src={iconHome} width="350px" alt='Mascote' />
+        <Image src={iconHome} width={320} alt='Mascote' />
         <DivTextHeader>
           <Title color='black' fSize={19}>
             <strong className="editUrl">{url}</strong>.{urlWay}
